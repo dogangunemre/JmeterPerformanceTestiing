@@ -1,0 +1,353 @@
+{
+	"info": {
+		"_postman_id": "dbd722f5-6d7e-4e6c-bcb5-fdd847bb9031",
+		"name": "https://petstore.swagger.io/",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "13311282"
+	},
+	"item": [
+		{
+			"name": "pet-post",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var res = pm.response.json();",
+							"",
+							"pm.test(\"Status code should be - 200\", function () {",
+							"   pm.response.to.have.status(200);",
+							"});",
+							"",
+							"",
+							"pm.test(\"status should be available\" ,function() {",
+							"   pm.expect(res.status).to.eql(\"available\"); ",
+							"});",
+							"",
+							"",
+							"pm.test(\"id should not be null\" ,function() {",
+							"   pm.expect(res.id).to.not.eql(null); ",
+							"});",
+							"",
+							"",
+							"pm.collectionVariables.set(\"id\",JSON.stringify(res.id));",
+							"",
+							"",
+							"",
+							"",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"id\": 0,\n  \"category\": {\n    \"id\": 0,\n    \"name\": \"string\"\n  },\n  \"name\": \"doggie\",\n  \"photoUrls\": [\n    \"string\"\n  ],\n  \"tags\": [\n    {\n      \"id\": 0,\n      \"name\": \"string\"\n    }\n  ],\n  \"status\": \"available\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{base-url}}/pet",
+					"host": [
+						"{{base-url}}"
+					],
+					"path": [
+						"pet"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "pet-get",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var res = pm.response.json();",
+							"",
+							"pm.test(\"Status code should be - 200\", function () {",
+							"   pm.response.to.have.status(200);",
+							"});",
+							"",
+							"",
+							"pm.test(\"status should be available\" ,function() {",
+							"   pm.expect(res.status).to.eql(\"available\"); ",
+							"});",
+							"",
+							"",
+							"pm.test(\"id should not be null\" ,function() {",
+							"   pm.expect(res.id).to.not.eql(null); ",
+							"});",
+							"",
+							"",
+							"pm.collectionVariables.set(\"id\",JSON.stringify(res.id));",
+							"",
+							"",
+							"",
+							"",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{base-url}}/pet/: petId",
+					"host": [
+						"{{base-url}}"
+					],
+					"path": [
+						"pet",
+						": petId"
+					],
+					"variable": [
+						{
+							"key": " petId",
+							"value": "1"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "pet-put",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"id\": 0,\n  \"category\": {\n    \"id\": 0,\n    \"name\": \"string\"\n  },\n  \"name\": \"doggie\",\n  \"photoUrls\": [\n    \"string\"\n  ],\n  \"tags\": [\n    {\n      \"id\": 0,\n      \"name\": \"string\"\n    }\n  ],\n  \"status\": \"available\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://petstore.swagger.io/v2/pet",
+					"protocol": "https",
+					"host": [
+						"petstore",
+						"swagger",
+						"io"
+					],
+					"path": [
+						"v2",
+						"pet"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "pet-delete",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var res = pm.response.json();",
+							"",
+							"pm.test(\"Status code should be - 200\", function () {",
+							"   pm.response.to.have.status(200);",
+							"});",
+							"",
+							"",
+							"pm.test(\"status should be available\" ,function() {",
+							"   pm.expect(res.status).to.eql(\"available\"); ",
+							"});",
+							"",
+							"",
+							"pm.test(\"id should not be null\" ,function() {",
+							"   pm.expect(res.id).to.not.eql(null); ",
+							"});",
+							"",
+							"",
+							"pm.collectionVariables.set(\"id\",JSON.stringify(res.id));",
+							"",
+							"",
+							"",
+							"",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"id\": 0,\n  \"category\": {\n    \"id\": 0,\n    \"name\": \"string\"\n  },\n  \"name\": \"doggie\",\n  \"photoUrls\": [\n    \"string\"\n  ],\n  \"tags\": [\n    {\n      \"id\": 0,\n      \"name\": \"string\"\n    }\n  ],\n  \"status\": \"available\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{base-url}}/pet?petId=1",
+					"host": [
+						"{{base-url}}"
+					],
+					"path": [
+						"pet"
+					],
+					"query": [
+						{
+							"key": "petId",
+							"value": "1"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					"function rastgeleSayi(min, max) { return Math.floor(Math.random() * (max - min + 1)) + min; }",
+					"",
+					"function TCNOUret() {",
+					"    var rakam = [];",
+					"    var tcNo = \"\";",
+					"    rakam[0] = rastgeleSayi(1, 9);",
+					"    for (i = 1; i < 9; i++) { rakam[i] = rastgeleSayi(0, 9); }",
+					"    rakam[9] = ((rakam[0] + rakam[2] + rakam[4] + rakam[6] + rakam[8]) * 7 - (rakam[1] + rakam[3] + rakam[5] + rakam[7])) % 10;",
+					"    rakam[10] = (rakam[0] + rakam[1] + rakam[2] + rakam[3] + rakam[4] + rakam[5] + rakam[6] + rakam[7] + rakam[8] + rakam[9]) % 10;",
+					"    tcNo = rakam[0].toString() +",
+					"        rakam[1].toString() +",
+					"        rakam[2].toString() +",
+					"        rakam[3].toString() +",
+					"        rakam[4].toString() +",
+					"        rakam[5].toString() +",
+					"        rakam[6].toString() +",
+					"        rakam[7].toString() +",
+					"        rakam[8].toString() +",
+					"        rakam[9].toString() +",
+					"        rakam[10].toString();",
+					"    return tcNo;",
+					"}",
+					"",
+					"",
+					"",
+					"pm.collectionVariables.set(\"mobileCreateDateTime\", JSON.stringify(new Date()));",
+					"pm.collectionVariables.set(\"randomTcNo\", JSON.stringify(TCNOUret()));",
+					"pm.collectionVariables.set(\"RandomPhoneNumber\", rastgeleSayi(5320000000, 5329999999));",
+					"",
+					"",
+					"",
+					"",
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "id",
+			"value": ""
+		},
+		{
+			"key": "base-url",
+			"value": "",
+			"type": "string"
+		},
+		{
+			"key": "mobileCreateDateTime",
+			"value": ""
+		},
+		{
+			"key": "randomTcNo",
+			"value": ""
+		},
+		{
+			"key": "RandomPhoneNumber",
+			"value": ""
+		}
+	]
+}
